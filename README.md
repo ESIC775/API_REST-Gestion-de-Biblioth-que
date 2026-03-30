@@ -251,6 +251,22 @@ docker run -p 3002:3000 \
   mohameddaoudmed247/library-api:latest
 ```
 
+### Volume Docker
+
+Un volume nommé `mysql_data` est configuré dans `docker-compose.yml` pour assurer la **persistance des données MySQL** entre les redémarrages du conteneur :
+
+```yaml
+volumes:
+  mysql_data:
+
+services:
+  db:
+    volumes:
+      - mysql_data:/var/lib/mysql
+```
+
+Les données ne sont pas perdues si le conteneur est arrêté (`docker compose stop`). Pour tout effacer : `docker compose down -v`.
+
 ---
 
 ## Structure du projet
